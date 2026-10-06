@@ -1,4 +1,4 @@
-# Project: Expense Tracker | Installment 2
+# Project: Expense Tracker | Installment 3
 # Author: Marsha Lei Hernandez
 # A simple landing page for a personal expense tracker.
 
@@ -19,19 +19,34 @@ print(f"Welcome, {name}! Let's log two expenses.")
 item1 = input("\nFirst expense? ")
 amount1 = float(input("Amount? "))
 
+subtotal = 0
+subtotal += amount1
+
 item2 = input("Second expense? ")
 amount2 = float(input("Amount? "))
+subtotal += amount2
 
-total = amount1 + amount2
-average = total / 2
+average = subtotal / 2
+
+tax_percent = int(input("Tax rate %? "))
+tax = subtotal * (tax_percent / 100)
+total = subtotal + tax
+
+budget = float(input("Your budget? "))
+over_budget = total > budget 
+left = budget - total 
 
 print()
 print("-" * 40)
 print("SUMMARY")
-print(f"{'':>2}{f'- {item1}:':<17}${amount1}")
-print(f"{'':>2}{f'- {item2}:':<17}${amount2}")
-print(f"{'Total spent:':<19}${total}")
-print(f"{'Average:':<19}${average}")
+print(f"{'':>2}{f'- {item1}:':<14}${amount1}")
+print(f"{'':>2}{f'- {item2}:':<14}${amount2}")
+print(f"{'Subtotal:':<16}${subtotal}")
+print(f"{'Average:':<16}${average}")
+print(f"{f'Tax ({tax_percent:.1f}%):':<16}${tax}")
+print(f"{'Grand total:':<16}${total}")
+print(f"{'Over budget?':<16}{over_budget}")
+print(f"{'Left in budget:':<16}${left}")
 print("-" * 40)
 
-print(f"Made by: Marsha Lei Hernandez | Installment 2")
+print(f"Made by: Marsha Lei Hernandez | Installment 3")
