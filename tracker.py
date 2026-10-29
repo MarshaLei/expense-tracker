@@ -1,4 +1,4 @@
-# Project: Expense Tracker | Installment 3
+# Project: Expense Tracker | Installment 4
 # Author: Marsha Lei Hernandez
 # A simple landing page for a personal expense tracker.
 
@@ -19,12 +19,34 @@ print(f"Welcome, {name}! Let's log two expenses.")
 item1 = input("\nFirst expense? ")
 amount1 = float(input("Amount? "))
 
+if amount1 > 200:
+    print("  Huge expense - are you sure?")
+elif amount1 > 100:
+    print("  Big expense.")
+elif amount1 > 50:
+    print("  Moderate expense.")
+else:
+    print("  Small expense.")
+
 subtotal = 0
 subtotal += amount1
 
 item2 = input("Second expense? ")
 amount2 = float(input("Amount? "))
+
+if amount2 > 200:
+    print("  Huge expense - are you sure?")
+elif amount2 > 100:
+    print("  Big expense.")
+elif amount2 > 50:
+    print("  Moderate expense.")
+else:
+    print("  Small expense.")
+    
 subtotal += amount2
+
+if amount1 > 100 and amount2 > 100:
+    print("  Two big expenses in a row - slow down!")
 
 average = subtotal / 2
 
@@ -45,8 +67,13 @@ print(f"{'Subtotal:':<16}${subtotal}")
 print(f"{'Average:':<16}${average}")
 print(f"{f'Tax ({tax_percent:.1f}%):':<16}${tax}")
 print(f"{'Grand total:':<16}${total}")
-print(f"{'Over budget?':<16}{over_budget}")
-print(f"{'Left in budget:':<16}${left}")
+
+if over_budget:
+    print(f"Over budget by ${abs(left)}.!")
+elif total > budget * 0.9:
+    print(f"Careful: only ${left} left.")
+else:
+    print(f"Within budget. ${left} left.")
 print("-" * 40)
 
-print(f"Made by: Marsha Lei Hernandez | Installment 3")
+print(f"Made by: Marsha Lei Hernandez | Installment 4")
